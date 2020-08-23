@@ -125,3 +125,14 @@ export const toBuffer = (curve: Curve, point: Point, compact = false): Buffer =>
 export const isEqual = (left: Point, right: Point): boolean => {
   return left.x === right.x && left.y === right.y;
 };
+
+/**
+ * Check if a point is infinite.
+ *
+ * @param {Curve} curve
+ * @param {Point} point
+ * @return {boolean}
+ */
+export const isInfinite = (curve: Curve, point: Point): boolean => {
+  return isEqual(pointAdd(curve, point, point), point);
+};

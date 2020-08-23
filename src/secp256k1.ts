@@ -1,5 +1,5 @@
 import { Curve, decodePoint } from './curve';
-import { pointAdd, pointMultiply, toBuffer } from './point';
+import { isInfinite, pointAdd, pointMultiply, toBuffer } from './point';
 import { bigIntToBuffer, bufferToBigInt, keccak256, toChecksumAddress } from './utils';
 
 /**
@@ -25,10 +25,9 @@ export const secp256k1: Curve = {
 export const getPublicKey = (privateKey: Buffer): Buffer => {
   const point = pointMultiply(secp256k1, secp256k1.g, privateKey);
 
-  // TODO
-  /*if (point.infinite) {
-    throw new Error('Point is infinite');
-  }*/
+  if (isInfinite(secp256k1, point)) {
+    throw new Error('Resulting key is invalid: point is at infinity');
+  }
 
   return toBuffer(secp256k1, point, true);
 };
@@ -85,10 +84,9 @@ export const publicAdd = (publicKey: Buffer, tweakBuffer: Buffer): Buffer => {
   const q = pointMultiply(secp256k1, secp256k1.g, tweak);
   const point = pointAdd(secp256k1, key, q);
 
-  // TODO
-  /*if (point.infinite) {
+  if (isInfinite(secp256k1, point)) {
     throw new Error('Resulting key is invalid: point is at infinity');
-  }*/
+  }
 
   return toBuffer(secp256k1, point, true);
 };
