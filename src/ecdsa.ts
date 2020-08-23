@@ -124,12 +124,18 @@ export const sign = (
       continue;
     }
 
-    const s = mod(curve.n, modInverse(k, curve.n) * (e + d * r));
+    let s = mod(curve.n, modInverse(k, curve.n) * (e + d * r));
     if (s === 0n) {
       continue;
     }
 
-    const v = ((y % 2n === 0n ? 0 : 1) | (x === r ? 0 : 2)) + 27;
+    let v = (y % 2n === 0n ? 0 : 1) | (x === r ? 0 : 2);
+    if (s > curve.n / 2n) {
+      s = curve.n - s;
+      v = v ^ 1;
+    }
+
+    v = v + 27;
 
     return {
       v,
