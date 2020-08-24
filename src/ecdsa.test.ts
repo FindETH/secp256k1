@@ -1,4 +1,5 @@
-import { generateK, recover, sign, verify } from './ecdsa';
+import transactions from './__fixtures__/transactions.json';
+import { generateK, recover, sign, signTransaction, verify } from './ecdsa';
 
 // test test test test test test test test test test test ball
 const PRIVATE_KEY = Buffer.from('044ce8e536ea4e4c61b42862bc98f8c574942fb77121e27f316cb15a96d9c99a', 'hex');
@@ -21,6 +22,17 @@ describe('sign', () => {
     expect(v).toBe(28);
     expect(r.toString(16)).toBe('fc99faa16863cc14d1d549e86bcdbe83e98672ce0999317311223e8e000ab5d1');
     expect(s.toString(16)).toBe('4f2adaa7385445ee7ea492fdbcd9790fbdc638c2b21f17f732b69b811ca5fbe1');
+  });
+});
+
+describe('signTransaction', () => {
+  it('signs a transaction', () => {
+    transactions.forEach(transaction => {
+      const privateKey = Buffer.from(transaction.key, 'hex');
+      const { raw, signed } = signTransaction(transaction, privateKey);
+      expect(raw.toString('hex')).toBe(transaction.unsigned);
+      expect(signed.toString('hex')).toBe(transaction.signed);
+    });
   });
 });
 

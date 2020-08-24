@@ -3,7 +3,7 @@ import { Curve, decodePoint, getPointFromX } from './curve';
 import { add, mod, modInverse, random } from './mod';
 import { pointAdd, pointMultiply, toBuffer } from './point';
 import { getAddress, secp256k1 } from './secp256k1';
-import { bufferToBigInt, keccak256 } from './utils';
+import { bufferToBigInt, keccak256, numberToBuffer, rlpEncode } from './utils';
 
 /**
  * An extended ECDSA signature {r, s, v}.
@@ -12,6 +12,16 @@ export interface ECDSASignature {
   v: number;
   r: bigint;
   s: bigint;
+}
+
+export interface Transaction {
+  nonce: number;
+  gasPrice: number | bigint;
+  gasLimit: number | bigint;
+  to: string;
+  value: number | bigint;
+  data: Buffer | string;
+  chainId?: number;
 }
 
 /**
@@ -85,31 +95,44 @@ export const generateK = (hash: Buffer, privateKey: Buffer, curve: Curve = secp2
  * Get the message hashed with `hash('\x19Ethereum Signed Message:\n32', hash(message))`. The hash used is Keccak-256,
  * and the output should match the hashes used by `eth_sign`.
  *
- * @param message
+ * @param {status} message
+ * @param {boolean} prefix
+ * @return {Buffer}
  */
-export const getHashedMessage = (message: string): Buffer => {
-  const messageHash = keccak256(Buffer.from(message, 'utf8'));
-  return keccak256(Buffer.concat([Buffer.from('\x19Ethereum Signed Message:\n32', 'utf8'), messageHash]));
+export const getHashedMessage = (message: string | Buffer, prefix = true): Buffer => {
+  const messageHash = keccak256(Buffer.isBuffer(message) ? message : Buffer.from(message, 'utf8'));
+
+  if (prefix) {
+    return keccak256(Buffer.concat([Buffer.from('\x19Ethereum Signed Message:\n32', 'utf8'), messageHash]));
+  }
+
+  return messageHash;
 };
 
 /**
  * Sign a message with the private key. When `deterministic` is set to `true` (default), this will use RFC6979
- * to generate a deterministic k value, otherwise a random k value is used.
+ * to generate a deterministic k value, otherwise a random k value is used. If a chainId is specified, this will use
+ * EIP-155 for the `v` value.
  *
- * Note that the message is automatically hashed and prefixed, to match the hashes used by `eth_sign`.
+ * Note that the message is automatically hashed and prefixed, to match the hashes used by `eth_sign`, unless `prefix`
+ * is disabled.
  *
  * @param {string} message
  * @param {Buffer} privateKey
  * @param {boolean} [deterministic]
+ * @param {boolean} [prefix]
+ * @param {number} [chainId]
  * @param {Curve} [curve]
  */
 export const sign = (
-  message: string,
+  message: string | Buffer,
   privateKey: Buffer,
   deterministic = true,
+  prefix = true,
+  chainId?: number,
   curve: Curve = secp256k1
 ): ECDSASignature => {
-  const hash = getHashedMessage(message);
+  const hash = getHashedMessage(message, prefix);
 
   const d = bufferToBigInt(privateKey);
   const e = bufferToBigInt(hash);
@@ -135,7 +158,7 @@ export const sign = (
       v = v ^ 1;
     }
 
-    v = v + 27;
+    v += chainId !== undefined ? chainId * 2 + 35 : 27;
 
     return {
       v,
@@ -143,6 +166,25 @@ export const sign = (
       s
     };
   }
+};
+
+/**
+ * Sign a transaction with a private key. Returns the RLP encoded signed transaction as Buffer.
+ *
+ * @param {Transaction} transaction
+ * @param {number} chainId
+ * @param {Buffer} privateKey
+ * @return {Buffer}
+ */
+export const signTransaction = (transaction: Transaction, privateKey: Buffer): { raw: Buffer; signed: Buffer } => {
+  const { nonce, gasPrice, gasLimit, to, value, data, chainId } = transaction;
+  const input = [nonce, gasPrice, gasLimit, to, value, data];
+
+  const raw = rlpEncode([...input, chainId ? numberToBuffer(chainId, 1) : 0, 0, 0]);
+  const { r, s, v } = sign(raw, privateKey, true, false, chainId);
+
+  const signed = rlpEncode([...input, v, Buffer.from(r.toString(16), 'hex'), Buffer.from(s.toString(16), 'hex')]);
+  return { raw, signed };
 };
 
 /**
