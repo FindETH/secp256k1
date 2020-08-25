@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;ecdsa&quot; | @findeth/secp256k1 - v0.1.0</title>
+	<title>&quot;ecdsa&quot; | @findeth/secp256k1 - v0.2.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@findeth/secp256k1 - v0.1.0</a>
+					<a href="../index.html" class="title">@findeth/secp256k1 - v0.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -74,6 +74,7 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_ecdsa_.ecdsasignature.html" class="tsd-kind-icon">ECDSASignature</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_ecdsa_.transaction.html" class="tsd-kind-icon">Transaction</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -84,6 +85,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_ecdsa_.html#isvalidprivatekey" class="tsd-kind-icon">is<wbr>Valid<wbr>Private<wbr>Key</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_ecdsa_.html#recover" class="tsd-kind-icon">recover</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_ecdsa_.html#sign" class="tsd-kind-icon">sign</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_ecdsa_.html#signtransaction" class="tsd-kind-icon">sign<wbr>Transaction</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_ecdsa_.html#verify" class="tsd-kind-icon">verify</a></li>
 							</ul>
 						</section>
@@ -102,7 +104,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/67e947f/src/ecdsa.ts#L35">ecdsa.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L45">ecdsa.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -130,13 +132,13 @@
 					<a name="gethashedmessage" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Hashed<wbr>Message</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Hashed<wbr>Message<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Hashed<wbr>Message<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Buffer</span>, prefix<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/67e947f/src/ecdsa.ts#L90">ecdsa.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L102">ecdsa.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -148,11 +150,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>message: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-										</div>
-									</div>
+									<h5>message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> prefix: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Buffer</span></h4>
@@ -169,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/67e947f/src/ecdsa.ts#L24">ecdsa.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L34">ecdsa.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -200,7 +201,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/67e947f/src/ecdsa.ts#L180">ecdsa.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L228">ecdsa.ts:228</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -239,26 +240,28 @@
 					<a name="sign" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> sign</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">sign<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, privateKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, deterministic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, curve<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_curve_.curve.html" class="tsd-signature-type">Curve</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ecdsa_.ecdsasignature.html" class="tsd-signature-type">ECDSASignature</a></li>
+						<li class="tsd-signature tsd-kind-icon">sign<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Buffer</span>, privateKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, deterministic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, prefix<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, chainId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, curve<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_curve_.curve.html" class="tsd-signature-type">Curve</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ecdsa_.ecdsasignature.html" class="tsd-signature-type">ECDSASignature</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/67e947f/src/ecdsa.ts#L106">ecdsa.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L127">ecdsa.ts:127</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Sign a message with the private key. When <code>deterministic</code> is set to <code>true</code> (default), this will use RFC6979
-									to generate a deterministic k value, otherwise a random k value is used.</p>
+										to generate a deterministic k value, otherwise a random k value is used. If a chainId is specified, this will use
+									EIP-155 for the <code>v</code> value.</p>
 								</div>
-								<p>Note that the message is automatically hashed and prefixed, to match the hashes used by <code>eth_sign</code>.</p>
+								<p>Note that the message is automatically hashed and prefixed, to match the hashes used by <code>eth_sign</code>, unless <code>prefix</code>
+								is disabled.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<h5>message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Buffer</span></h5>
 								</li>
 								<li>
 									<h5>privateKey: <span class="tsd-signature-type">Buffer</span></h5>
@@ -267,10 +270,55 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> deterministic: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
 								</li>
 								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> prefix: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> chainId: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> curve: <a href="../interfaces/_curve_.curve.html" class="tsd-signature-type">Curve</a><span class="tsd-signature-symbol"> =&nbsp;secp256k1</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_ecdsa_.ecdsasignature.html" class="tsd-signature-type">ECDSASignature</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="signtransaction" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> sign<wbr>Transaction</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">sign<wbr>Transaction<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><a href="../interfaces/_ecdsa_.transaction.html" class="tsd-signature-type">Transaction</a>, privateKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L179">ecdsa.ts:179</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sign a transaction with a private key. Returns the RLP encoded signed transaction as Buffer.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>transaction: <a href="../interfaces/_ecdsa_.transaction.html" class="tsd-signature-type">Transaction</a></h5>
+								</li>
+								<li>
+									<h5>privateKey: <span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>raw<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>signed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span></h5>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</section>
@@ -284,7 +332,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/67e947f/src/ecdsa.ts#L150">ecdsa.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L198">ecdsa.ts:198</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -354,12 +402,18 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_utils_index_.html">&quot;utils/index&quot;</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_utils_rlp_.html">&quot;utils/rlp&quot;</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_ecdsa_.ecdsasignature.html" class="tsd-kind-icon">ECDSASignature</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_ecdsa_.transaction.html" class="tsd-kind-icon">Transaction</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_ecdsa_.html#generatek" class="tsd-kind-icon">generateK</a>
@@ -375,6 +429,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_ecdsa_.html#sign" class="tsd-kind-icon">sign</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_ecdsa_.html#signtransaction" class="tsd-kind-icon">sign<wbr>Transaction</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_ecdsa_.html#verify" class="tsd-kind-icon">verify</a>

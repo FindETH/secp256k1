@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ECDSASignature | @findeth/secp256k1 - v0.2.0</title>
+	<title>Transaction | @findeth/secp256k1 - v0.2.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,28 +59,21 @@
 					<a href="../modules/_ecdsa_.html">&quot;ecdsa&quot;</a>
 				</li>
 				<li>
-					<a href="_ecdsa_.ecdsasignature.html">ECDSASignature</a>
+					<a href="_ecdsa_.transaction.html">Transaction</a>
 				</li>
 			</ul>
-			<h1>Interface ECDSASignature</h1>
+			<h1>Interface Transaction</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>An extended ECDSA signature {r, s, v}.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ECDSASignature</span>
+						<span class="target">Transaction</span>
 					</li>
 				</ul>
 			</section>
@@ -91,9 +84,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.ecdsasignature.html#r" class="tsd-kind-icon">r</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.ecdsasignature.html#s" class="tsd-kind-icon">s</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.ecdsasignature.html#v" class="tsd-kind-icon">v</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.transaction.html#chainid" class="tsd-kind-icon">chain<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.transaction.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.transaction.html#gaslimit" class="tsd-kind-icon">gas<wbr>Limit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.transaction.html#gasprice" class="tsd-kind-icon">gas<wbr>Price</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.transaction.html#nonce" class="tsd-kind-icon">nonce</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.transaction.html#to" class="tsd-kind-icon">to</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ecdsa_.transaction.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,32 +99,72 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="r" class="tsd-anchor"></a>
-					<h3>r</h3>
-					<div class="tsd-signature tsd-kind-icon">r<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">bigint</span></div>
+					<a name="chainid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> chain<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">chain<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L13">ecdsa.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L24">ecdsa.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="s" class="tsd-anchor"></a>
-					<h3>s</h3>
-					<div class="tsd-signature tsd-kind-icon">s<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">bigint</span></div>
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L14">ecdsa.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L23">ecdsa.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="v" class="tsd-anchor"></a>
-					<h3>v</h3>
-					<div class="tsd-signature tsd-kind-icon">v<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="gaslimit" class="tsd-anchor"></a>
+					<h3>gas<wbr>Limit</h3>
+					<div class="tsd-signature tsd-kind-icon">gas<wbr>Limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L12">ecdsa.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L20">ecdsa.ts:20</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="gasprice" class="tsd-anchor"></a>
+					<h3>gas<wbr>Price</h3>
+					<div class="tsd-signature tsd-kind-icon">gas<wbr>Price<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L19">ecdsa.ts:19</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="nonce" class="tsd-anchor"></a>
+					<h3>nonce</h3>
+					<div class="tsd-signature tsd-kind-icon">nonce<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L18">ecdsa.ts:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="to" class="tsd-anchor"></a>
+					<h3>to</h3>
+					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L21">ecdsa.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">bigint</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/FindETH/secp256k1/blob/4c704f5/src/ecdsa.ts#L22">ecdsa.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,27 +210,39 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_ecdsa_.ecdsasignature.html" class="tsd-kind-icon">ECDSASignature</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_ecdsa_.ecdsasignature.html" class="tsd-kind-icon">ECDSASignature</a>
+						<a href="_ecdsa_.transaction.html" class="tsd-kind-icon">Transaction</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_ecdsa_.ecdsasignature.html#r" class="tsd-kind-icon">r</a>
+								<a href="_ecdsa_.transaction.html#chainid" class="tsd-kind-icon">chain<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_ecdsa_.ecdsasignature.html#s" class="tsd-kind-icon">s</a>
+								<a href="_ecdsa_.transaction.html#data" class="tsd-kind-icon">data</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_ecdsa_.ecdsasignature.html#v" class="tsd-kind-icon">v</a>
+								<a href="_ecdsa_.transaction.html#gaslimit" class="tsd-kind-icon">gas<wbr>Limit</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ecdsa_.transaction.html#gasprice" class="tsd-kind-icon">gas<wbr>Price</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ecdsa_.transaction.html#nonce" class="tsd-kind-icon">nonce</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ecdsa_.transaction.html#to" class="tsd-kind-icon">to</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ecdsa_.transaction.html#value" class="tsd-kind-icon">value</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_ecdsa_.transaction.html" class="tsd-kind-icon">Transaction</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="../modules/_ecdsa_.html#generatek" class="tsd-kind-icon">generateK</a>
 					</li>
