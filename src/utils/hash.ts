@@ -3,6 +3,7 @@ import createHash from 'create-hash';
 import createHmac from 'create-hmac';
 import createKeccakHash from 'keccak';
 import { pbkdf2Sync } from 'pbkdf2';
+import { hexify } from './buffer';
 
 /**
  * Hash a buffer with provided key using HMAC-SHA512.
@@ -54,8 +55,9 @@ export const ripemd160 = (buffer: Buffer): Buffer => {
 export const keccak256 = (buffer: Buffer): Buffer => {
   return Buffer.from(
     createKeccakHash('keccak256')
-      .update(buffer)
-      .digest()
+      .update(hexify(buffer), 'hex')
+      .digest('hex'),
+    'hex'
   );
 };
 

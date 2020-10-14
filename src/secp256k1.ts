@@ -1,6 +1,6 @@
 import { Curve, decodePoint } from './curve';
 import { isInfinite, pointAdd, pointMultiply, toBuffer } from './point';
-import { bigIntToBuffer, bufferToBigInt, keccak256, toChecksumAddress } from './utils';
+import { bigIntToBuffer, bufferToBigInt, hexify, keccak256, toChecksumAddress } from './utils';
 
 /* eslint-disable no-restricted-globals */
 
@@ -37,9 +37,7 @@ export const getPublicKey = (privateKey: Buffer): Buffer => {
 export const getAddress = (publicKey: Buffer): string => {
   const buffer = decompressPublicKey(publicKey).subarray(1);
 
-  const hash = keccak256(buffer)
-    .subarray(-20)
-    .toString('hex');
+  const hash = hexify(keccak256(buffer).subarray(-20));
   return toChecksumAddress(hash);
 };
 
