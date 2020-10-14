@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { createHmac } from 'crypto';
 import { Curve, decodePoint, getPointFromX } from './curve';
 import { add, mod, modInverse, random } from './mod';

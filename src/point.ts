@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { Curve } from './curve';
 import { divide, mod, multiply as modMultiply, subtract } from './mod';
 import { bigIntToBuffer, bufferToBigInt } from './utils';

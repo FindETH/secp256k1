@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer';
+
 /**
  * Get a Buffer as hexadecimal string
  *

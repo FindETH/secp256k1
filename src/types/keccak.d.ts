@@ -1,4 +1,6 @@
 declare module 'keccak' {
+  import { Buffer } from 'buffer';
+
   type Algorithm =
     | 'keccak224'
     | 'keccak256'

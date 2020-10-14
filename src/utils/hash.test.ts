@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { hmacSHA512, keccak256, pbkdf2, ripemd160, sha256, toChecksumAddress } from './hash';
 
 const TEST_STRING = Buffer.from('foo bar', 'utf8');

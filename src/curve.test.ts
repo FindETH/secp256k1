@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { decodePoint, getPoint, getPointFromX } from './curve';
 import { secp256k1 } from './secp256k1';
 

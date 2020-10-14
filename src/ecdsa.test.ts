@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import transactions from './__fixtures__/transactions.json';
 import { generateK, recover, sign, signTransaction, verify } from './ecdsa';
 

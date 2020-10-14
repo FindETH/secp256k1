@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer';
+
 export type Input = Buffer | string | number | bigint | Input[];
 
 /**

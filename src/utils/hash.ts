@@ -1,5 +1,8 @@
-import { createHash, createHmac, pbkdf2Sync } from 'crypto';
+import { Buffer } from 'buffer';
+import createHash from 'create-hash';
+import createHmac from 'create-hmac';
 import createKeccakHash from 'keccak';
+import { pbkdf2Sync } from 'pbkdf2';
 import { hexify } from './buffer';
 
 /**

@@ -2,6 +2,8 @@ import { Curve, decodePoint } from './curve';
 import { isInfinite, pointAdd, pointMultiply, toBuffer } from './point';
 import { bigIntToBuffer, bufferToBigInt, keccak256, toChecksumAddress } from './utils';
 
+/* eslint-disable no-restricted-globals */
+
 /**
  * All parameters defined by the Secp256k1 curve.
  */

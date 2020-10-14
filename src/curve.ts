@@ -2,6 +2,8 @@ import { add, power, squareRoots } from './mod';
 import { Point } from './point';
 import { bigIntToBuffer, bufferToBigInt } from './utils';
 
+/* eslint-disable no-restricted-globals */
+
 /**
  * Minimal secp256k1 elliptic curve implementation. Thanks to the following projects:
  *  - https://github.com/Azero123/simple-js-ec-math

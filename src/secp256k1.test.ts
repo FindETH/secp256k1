@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { compressPublicKey, decompressPublicKey, getPublicKey, privateAdd, publicAdd } from './secp256k1';
 
 // test test test test test test test test test test test ball

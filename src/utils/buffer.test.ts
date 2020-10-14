@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { dehexify, hexify, numberToBuffer } from './buffer';
 
 describe('hexify', () => {
