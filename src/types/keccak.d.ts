@@ -1,6 +1,4 @@
 declare module 'keccak' {
-  import { Hash } from 'crypto';
-
   type Algorithm =
     | 'keccak224'
     | 'keccak256'
