@@ -1,6 +1,6 @@
 {
   "name": "@findeth/secp256k1",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Tiny SECP256k1 and ECDSA implementation",
   "author": "Maarten Zuidhoorn <maarten@zuidhoorn.com>",
   "homepage": "https://github.com/FindETH/secp256k1",
